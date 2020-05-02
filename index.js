@@ -10,4 +10,8 @@ app.use(function (request, response) {
   
   app.listen(app.get('port'), function () {
     console.log('server running. ctrl^c to stop');
+      });
+  app.get("/", function (request, response) {
+    response.status('text/html');
+    response.send('<h1>Home Page</h1>');
     });
