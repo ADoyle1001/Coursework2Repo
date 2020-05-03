@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+{{>header}}
+</head>
+<body class="container">
+<h1>{{title}}</h1>
+
+{{#entries}}
+    <div class="panel panel-default" data-id="{{id}}">
+         <div class="panel-heading">
+            <div>
+                {{subject}}
+            </div>   
+          </div>     
+          
+          <div class="panel-body">
+            {{contents}}
+          </div>
+
+          <div class="panel-body">
+            {{published}}
+          </div>
+    </div>
+{{/entries}}   
+</body
+</html>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Express Demo Guestbook</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
