@@ -1,3 +1,10 @@
+//import libraries
+var express = require("express"),
+path = require("path"),
+mustache = require('mustache-express'),
+controller = require('./controllers/routes.js');
+
+//use the express framework for the application
 var app = express();
 
 //define the port, either use the existing environment variable or 3000
@@ -7,9 +14,7 @@ app.set('port', process.env.PORT || 3000);
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
-//use the ../static folder to serve static resources, e.g. images
-var staticPath = path.resolve(__dirname, "../static");
-app.use(express.static(staticPath));
+;
 
 //use controller (defined above) for handling requests
 app.use('/', controller);
