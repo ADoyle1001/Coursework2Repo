@@ -19,6 +19,12 @@ app.set('view engine', 'mustache');
 //use controller (defined above) for handling requests
 app.use('/', controller);
 
+app.use(function (req, res) {
+    res.status(404);
+    res.type('text/plain');
+    res.send("404 - Not found.");
+});
+
 //listen on the defined port and log the fact
 app.listen(app.get('port'), function () {
     console.log('server started');
