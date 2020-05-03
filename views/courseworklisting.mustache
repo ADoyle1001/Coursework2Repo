@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+{{>header}}
+</head>
+<body class="container">
+<h1>{{title}}</h1>
+
+{{#entries}}
+    <div class="panel panel-default" data-id="{{id}}">
+         <div class="panel-heading">
+            <div>
+                {{CourseworkTitle}}
+            </div>   
+          </div>     
+          
+          <div class="panel-body">
+            {{CourseworkModule}}
+          </div>
+
+          <div class="panel-body">
+            {{ProjectMilestones}}
+          </div>
+
+          <div class="panel-body">
+            {{CourseworkDueDate}}
+          </div>
+
+          <div class="panel-body">
+            {{CourseworkCompletionDate}}
+          </div>
+
+    </div>
+{{/entries}}   
+</body
+</html>
+
+
