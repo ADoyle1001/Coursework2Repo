@@ -1,43 +1,9 @@
 
 const express = require('express');
 const controller = express.Router();
-const userDao = require('../models/user.js');
-const bookDao = require('../models/guestbook.js')
+const userDao = require('../models/users.js');
 const auth = require('../auth/auth.js');
-const { ensureLoggedIn } = require('connect-ensure-login');
 
-
-controller.get("/guestbook", function (request, response) {
-    bookDao.getAllEntries()
-        .then((list) => {
-            response.render("entries", {
-                "title": "Guest Book",
-                "entries": list,
-                "user": request.user
-            });
-            //console.log(list);
-        })
-        .catch((err) => {
-            console.log('Error getting all entries: ')
-            console.log(JSON.stringify(err))
-        });
-});
-
-controller.get('/new-entry', ensureLoggedIn('/login'), function(request, response) {
-    response.render("newEntry", {
-        'user': request.user.user
-    });
-})
-
-controller.post('/new-entry', ensureLoggedIn('/login'), function (request, response) {
-    //console.log('post request ' + request.body.author+ request.body.subject+ request.body.contents);
-    if (!request.body.subject || !request.body.contents) {
-        response.status(400).send("Entries must have a title and content.");
-        return;
-    }
-    bookDao.create(request.body.author, request.body.subject, request.body.contents, Date.now());
-    response.redirect("/guestbook");
-});
 
 controller.get("/", function(request, response) {
     response.type('html');
@@ -54,7 +20,7 @@ controller.post("/login", auth.authorize("/login"), function(request, response) 
 
 controller.get("/logout", function(request, response) {
     request.logout();
-    response.redirect("/guestbook");
+    response.redirect("/login");
 });
 
 controller.get('/register', function(request, response) {
