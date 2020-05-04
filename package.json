@@ -1,22 +1,24 @@
 {
-  "name": "login-register",
+  "name": "lecture3",
   "version": "1.0.0",
-  "description": "",
+  "description": "persistence example",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "sqlite"
+  ],
+  "author": "kh",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^4.0.1",
     "connect-ensure-login": "^0.1.1",
     "express": "^4.17.1",
-    "express-session": "^1.17.1",
-    "mustache": "^4.0.1",
+    "express-session": "^1.17.0",
     "mustache-express": "^1.3.0",
     "nedb": "^1.8.0",
+    "nodemon": "^2.0.2",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   }
