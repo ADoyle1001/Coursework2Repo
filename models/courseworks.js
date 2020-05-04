@@ -21,16 +21,14 @@ init() {
             CourseworkTitle: 'Web Development Video Presentation',
             CourseworkModule: 'Web Development', 
             ProjectMilestones: 'working on database',
-            CourseworkDueDate: '06/05/2020',
-            CourseworkCompletionDate: '06/05/2020'
+            
         });
         
         this.db.insert({
             CourseworkTitle: 'IP3 Individual Report',
             CourseworkModule: 'Integrated Project 3', 
             ProjectMilestones: 'Started development',
-            CourseworkDueDate: '06/05/2020',
-            CourseworkCompletionDate: '06/05/2020'            
+                       
         });
 }
 
@@ -49,13 +47,12 @@ getAllEntries() {
     }
 
      //insert a new coursework entry
-     addCoursework(CourseworkTitle, CourseworkModule, ProjectMilestones, CourseworkDueDate , CourseworkCompletionDate) {
+     addCoursework(CourseworkTitle, CourseworkModule, ProjectMilestones) {
         var entry = {
             CourseworkTitle: CourseworkTitle,
             CourseworkModule: CourseworkModule,
             ProjectMilestones: ProjectMilestones,
-            CourseworkDueDate: CourseworkDueDate,
-            CourseworkCompletionDate: CourseworkCompletionDate
+            
             
         };
 
@@ -63,9 +60,32 @@ getAllEntries() {
             if (err) {
                 console.log("Error inserting document into database", title);
             } else {
-                console.log('add coursework:', student);
+                console.log('add coursework:', CourseworkTitle);
             }
         });
+    }
+
+    //delete coursework 
+    deleteCoursework(CourseworkTitle) {
+        this.db.remove({ "CourseworkTitle": CourseworkTitle }, {}, function (err, numRemoved) {
+            if (err) {
+                console.log('Error deleting coursework', student, err);
+            } else {
+                console.log('deleted coursework:', CourseworkTitle, numRemoved);
+            }
+        });
+    }
+
+    //update details for a coursework
+    updateStudent(CourseworkTitle, CourseworkModule, ProjectMilestones) {
+        this.db.update({ "CourseworkTitle": CourseworkTitle }, { $set: { "CourseworkModule": CourseworkModule, "ProjectMilestones": ProjectMilestones } }, { multi: true },
+            function (err, numReplaced) {
+                if (err) {
+                    console.log('Error updating coursework', CourseworkTitle, err);
+                } else {
+                    console.log('update coursework:', CourseworkTitle);
+                }
+            });
     }
 }
 module.exports = DAO;

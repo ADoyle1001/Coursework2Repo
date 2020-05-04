@@ -30,7 +30,7 @@ controller.post('/post', function (request, response) {
         return;
     }
     entries.create(request.body.title, request.body.module, 
-    request.body.milestone, request.body.due,reqeust.body.completed);                          
+    request.body.milestone);                          
         response.redirect("/courseworklisting");
     })
     
