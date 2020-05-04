@@ -69,7 +69,7 @@ getAllEntries() {
     deleteCoursework(CourseworkTitle) {
         this.db.remove({ "CourseworkTitle": CourseworkTitle }, {}, function (err, numRemoved) {
             if (err) {
-                console.log('Error deleting coursework', student, err);
+                console.log('Error deleting coursework', CourseworkTitle, err);
             } else {
                 console.log('deleted coursework:', CourseworkTitle, numRemoved);
             }

@@ -34,7 +34,11 @@ controller.post('/post', function (request, response) {
         response.redirect("/courseworklisting");
     })
     
-
+    controller.get('/delete/:CourseworkTitle', function(request, response) {
+        //console.log('Delete link clicked with argument', request.params.student);
+        dao.deleteCoursework(request.params.CourseworkTitle);
+        response.redirect("/courseworks");
+    })
 
 
 module.exports = controller;
