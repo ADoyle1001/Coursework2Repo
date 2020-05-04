@@ -77,7 +77,7 @@ getAllEntries() {
     }
 
     //update details for a coursework
-    updateStudent(CourseworkTitle, CourseworkModule, ProjectMilestones) {
+    updateCoursework(CourseworkTitle, CourseworkModule, ProjectMilestones) {
         this.db.update({ "CourseworkTitle": CourseworkTitle }, { $set: { "CourseworkModule": CourseworkModule, "ProjectMilestones": ProjectMilestones } }, { multi: true },
             function (err, numReplaced) {
                 if (err) {
@@ -86,6 +86,21 @@ getAllEntries() {
                     console.log('update coursework:', CourseworkTitle);
                 }
             });
+    }
+
+   
+    getCoursework(CourseworkTitle) {
+        return new Promise((resolve, reject) => {
+            this.db.find({ "CourseworkTitle": CourseworkTitle }, function (err, entries) {
+                if (err) {
+                    reject(err);
+                    
+                } else {
+                    resolve(entries);
+                    
+                }
+            });
+        });
     }
 }
 module.exports = DAO;

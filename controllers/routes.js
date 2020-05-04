@@ -21,7 +21,7 @@ controller.get("/courseworks", function (request, response) {
 
 controller.get('/addCoursework', function(request, response) {
     response.render("addCoursework");
-    //console.log("Render new coursework form");
+    
 })
 
 controller.post('/post', function (request, response) {
@@ -35,10 +35,30 @@ controller.post('/post', function (request, response) {
     })
     
     controller.get('/delete/:CourseworkTitle', function(request, response) {
-        //console.log('Delete link clicked with argument', request.params.student);
+        
         dao.deleteCoursework(request.params.CourseworkTitle);
         response.redirect("/courseworks");
     })
 
+    controller.get('/edit/:CourseworkTitle', function(request, response) {
+        //console.log('Edit get link clicked with argument', request.params.student);
+        dao.getCoursework(request.params.CourseworkTitle)
+        .then((list) => {
+            //console.log("Render edit student page with", list);
+            response.render("editCoursework", {
+                "title": "Database Example",
+                "item":list
+            });
+        })
+        .catch((err) => {
+            console.log('Error getting student:', request.params.student, err);
+        });
+    })
+
+    //this is much easier with sessions, see week 10
+    controller.post('/edit/:CourseworkTitle', function(request, response) {
+    dao.updateCoursework( request.body.CourseworkTitle, request.body.CourseworkModule, request.body.ProjectMilestones);
+    response.redirect("/courseworks");
+})
 
 module.exports = controller;
