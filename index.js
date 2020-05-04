@@ -29,3 +29,7 @@ app.use(function (req, res) {
 app.listen(app.get('port'), function () {
     console.log('server started');
 })
+
+bodyParser = require('body-parser'),
+app.use(bodyParser.urlencoded({extended: false}));
+
