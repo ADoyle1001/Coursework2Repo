@@ -3,6 +3,7 @@ var express = require("express"),
 path = require("path"),
 mustache = require('mustache-express'),
 controller = require('./controllers/routes.js');
+bodyParser = require('body-parser')
 
 //use the express framework for the application
 var app = express();
@@ -30,6 +31,6 @@ app.listen(app.get('port'), function () {
     console.log('server started');
 })
 
-bodyParser = require('body-parser'),
+
 app.use(bodyParser.urlencoded({extended: false}));
 

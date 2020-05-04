@@ -24,15 +24,16 @@ controller.get('/addCoursework', function(request, response) {
     //console.log("Render new coursework form");
 })
 
-controller.post('/add', function(request, response){
-    if (!request.body.subject || !request.body.contents) {
-        response.status(400).send("Entries must have a title and content.");
+controller.post('/post', function (request, response) {
+    if (!request.body.title) {
+        response.status(400).send("Coursework title must be provided.");
         return;
     }
-entries.create(request.body.author, request.body.subject, 
-request.body.contents, Date.now());                          
-    response.redirect("/courseworks");
-})
+    entries.create(request.body.title, request.body.module, 
+    request.body.milestone, request.body.due,reqeust.body.completed);                          
+        response.redirect("/courseworklisting");
+    })
+    
 
 
 
