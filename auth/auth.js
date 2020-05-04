@@ -1,7 +1,7 @@
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
-const userDao = require('../models/user');
-const bcrypt = require('bcrypt');
+const userDao = require('../models/users');
+const bcryptjs = require('bcryptjs');
 
 exports.init = function(app) {
     // setup password
@@ -18,7 +18,7 @@ exports.init = function(app) {
                 return cb(null, false); 
             }
             //compare provided password with that in the database
-            bcrypt.compare(password, user.password, function(err, result) {
+            bcryptjs.compare(password, user.password, function(err, result) {
                 if (result) {
                     cb(null, user);
                 } else {

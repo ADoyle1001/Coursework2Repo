@@ -1,5 +1,5 @@
 const Datastore = require("nedb");
-const bcrypt = require('bcrypt');
+const bcryptjs = require('bcryptjs');
 const saltRounds = 10;
 
 class UserDAO {
@@ -12,7 +12,7 @@ class UserDAO {
             this.db = new Datastore();
         }
     }
-    // for the demo the password is the bcrypt of the user name
+    // for the demo the password is the bcryptjs of the user name
     init() {
         this.db.insert({
             user: 'Peter',
@@ -30,7 +30,7 @@ class UserDAO {
 
     create(username, password) { 
         const that = this;
-        bcrypt.hash(password, saltRounds).then(function(hash) {
+        bcryptjs.hash(password, saltRounds).then(function(hash) {
             var entry = {
                 user: username,
                 password: hash,
@@ -46,7 +46,7 @@ class UserDAO {
     }
 
     lookup(user, cb) {
-        this.db.find({'user': user}, function (err, entries) {
+        this.db.find({'users': user}, function (err, entries) {
             if (err) {
                 return cb(null, null);
             } else {
