@@ -19,8 +19,8 @@ controller.get("/courseworks", function (request, response) {
         });
 });
 
-controller.get('/add', function(request, response) {
-    response.render("new-coursework");
+controller.get('/addCoursework', function(request, response) {
+    response.render("addCoursework");
     //console.log("Render new coursework form");
 })
 
