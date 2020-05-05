@@ -6,8 +6,7 @@ const auth = require('../auth/auth.js');
 
 
 controller.get("/", function(request, response) {
-    response.type('html');
-    response.end('<h1>The landing page.</h1>');
+    response.render("user/mainpage")
 });
 
 controller.get("/login", function(request, response) {
@@ -15,7 +14,7 @@ controller.get("/login", function(request, response) {
 });
 
 controller.post("/login", auth.authorize("/login"), function(request, response) {
-    response.redirect("/guestbook");
+    response.redirect("/courseworks");
 });
 
 controller.get("/logout", function(request, response) {
@@ -23,14 +22,13 @@ controller.get("/logout", function(request, response) {
     response.redirect("/login");
 });
 
-controller.get('/register', function(request, response) {
+controller.get("/register", function(request, response) {
     response.render("user/register");
 });
 
 controller.post("/register", function(request, response) {
     const user = request.body.username;
     const password = request.body.pass;
-    //console.log("register user", user, "password",  password);
     if (!user || !password) {
         response.send(401, 'no user or no password');
         return;
