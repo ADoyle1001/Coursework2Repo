@@ -38,13 +38,13 @@ controller.post('/addCoursework', function (request, response) {
     
     controller.get('/delete/:Ctitle', function(request, response) {
         
-        dao.deleteCoursework(request.params.title);
+        dao.deleteCoursework(request.params.Ctitle);
         response.redirect("/courseworks");
     })
 
     controller.get('/edit/:Ctitle', function(request, response) {
         //console.log('Edit get link clicked with argument', request.params.student);
-        dao.getCoursework(request.params.title)
+        dao.getCoursework(request.params.Ctitle)
         .then((list) => {
             //console.log("Render edit student page with", list);
             response.render("editCoursework", {

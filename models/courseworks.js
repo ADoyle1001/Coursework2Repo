@@ -63,7 +63,7 @@ init() {
     }
 
     //delete coursework 
-    deleteCoursework(title) {
+    deleteCoursework(Ctitle) {
         this.db.remove({ "Ctitle": Ctitle }, {}, function (err, numRemoved) {
             if (err) {
                 console.log('Error deleting coursework', Ctitle, err);
