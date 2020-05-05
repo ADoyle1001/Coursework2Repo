@@ -1,23 +1,21 @@
-//import libraries
-var express = require("express"),
+var express = require ("express"),
 path = require("path"),
 mustache = require('mustache-express'),
+bodyParser = require('body-parser'),
 controller = require('./controllers/routes.js');
-bodyParser = require('body-parser')
 
-//use the express framework for the application
 var app = express();
 
-//define the port, either use the existing environment variable or 3000
 app.set('port', process.env.PORT || 3000);
 
-//define Mustache as the view engine
 app.engine('mustache', mustache());
 app.set('view engine', 'mustache');
 
-;
+//var staticPath = path.resolve(__dirname, "/static");
+app.use(express.static('static'));
 
-//use controller (defined above) for handling requests
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.use('/', controller);
 
 app.use(function (req, res) {
@@ -26,11 +24,9 @@ app.use(function (req, res) {
     res.send("404 - Not found.");
 });
 
-//listen on the defined port and log the fact
 app.listen(app.get('port'), function () {
-    console.log('server started');
+    console.log('server started, ctl^c to quit');
 })
 
 
-app.use(bodyParser.urlencoded({extended: false}));
 

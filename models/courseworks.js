@@ -15,24 +15,23 @@ class DAO {
 }
 
 
-
 init() {
-        this.db.insert({
-            CourseworkTitle: 'Web Development Video Presentation',
-            CourseworkModule: 'Web Development', 
-            ProjectMilestones: 'working on database',
-            
-        });
-        
-        this.db.insert({
-            CourseworkTitle: 'IP3 Individual Report',
-            CourseworkModule: 'Integrated Project 3', 
-            ProjectMilestones: 'Started development',
-                       
-        });
+    this.db.insert({
+        Ctitle: 'Web Dev',
+        module: 'Test', 
+        milestones: 'made a website'
+    });
+    console.log('record inserted in init');
+    
+    this.db.insert({
+        Ctitle: 'IP3',
+        module: 'Integrated', 
+        milestones: 'made a mockup'
+    });
+    console.log('record inserted in init');
 }
 
-getAllEntries() {
+    getAllEntries() {
         return new Promise((resolve, reject) => {
             this.db.find({}, function (err, entries) {
                 if (err) {
@@ -47,51 +46,49 @@ getAllEntries() {
     }
 
      //insert a new coursework entry
-     addCoursework(CourseworkTitle, CourseworkModule, ProjectMilestones) {
+     addCoursework(Ctitle, module, milestones) {
         var entry = {
-            CourseworkTitle: CourseworkTitle,
-            CourseworkModule: CourseworkModule,
-            ProjectMilestones: ProjectMilestones,
-            
-            
+            Ctitle: Ctitle,
+            module: module,
+            milestones: milestones
         };
 
         this.db.insert(entry, function (err, doc) {
             if (err) {
-                console.log("Error inserting document into database", title);
+                console.log("Error inserting document into database", Ctitle);
             } else {
-                console.log('add coursework:', CourseworkTitle);
+                console.log('add coursework:', Ctitle);
             }
         });
     }
 
     //delete coursework 
-    deleteCoursework(CourseworkTitle) {
-        this.db.remove({ "CourseworkTitle": CourseworkTitle }, {}, function (err, numRemoved) {
+    deleteCoursework(title) {
+        this.db.remove({ "Ctitle": Ctitle }, {}, function (err, numRemoved) {
             if (err) {
-                console.log('Error deleting coursework', CourseworkTitle, err);
+                console.log('Error deleting coursework', Ctitle, err);
             } else {
-                console.log('deleted coursework:', CourseworkTitle, numRemoved);
+                console.log('deleted coursework:', Ctitle, numRemoved);
             }
         });
     }
 
     //update details for a coursework
-    updateCoursework(CourseworkTitle, CourseworkModule, ProjectMilestones) {
-        this.db.update({ "CourseworkTitle": CourseworkTitle }, { $set: { "CourseworkModule": CourseworkModule, "ProjectMilestones": ProjectMilestones } }, { multi: true },
+    updateCoursework(Ctitle, module, milestones) {
+        this.db.update({ "Ctitle": Ctitle }, { $set: { "module": module, "milestones": milestones } },
             function (err, numReplaced) {
                 if (err) {
-                    console.log('Error updating coursework', CourseworkTitle, err);
+                    console.log('Error updating coursework', Ctitle, err);
                 } else {
-                    console.log('update coursework:', CourseworkTitle);
+                    console.log('update coursework:', Ctitle);
                 }
             });
     }
 
    
-    getCoursework(CourseworkTitle) {
+    getCoursework(Ctitle) {
         return new Promise((resolve, reject) => {
-            this.db.find({ "CourseworkTitle": CourseworkTitle }, function (err, entries) {
+            this.db.find({ "Ctitle": Ctitle }, function (err, entries) {
                 if (err) {
                     reject(err);
                     
