@@ -27,19 +27,27 @@ Web application to allow users to track assignments and set milestones
 ## Setup
 to run intsall on local machine and : 
 
-cd coursework2repo 
+
 Node install bycryptjs
+
 Npm install mustache --save
+
 Npm install nedb --save
+
 Npm  install passport -- local
+
 Npm install bycryptjs  
+
 Npm install mustache --save
+
 Npm install nedb --save 
+
 Npm  istall passport -- local
+
 
 node index.js
 
-go to "localhost:3000" once promted that server has started
+go to "localhost:3000" once prompted that server has started
 
 
 ## Code Examples
