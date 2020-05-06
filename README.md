@@ -1,3 +1,5 @@
+# Coursework2Repo
+
 ## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
@@ -27,8 +29,14 @@ To run this web application, install locally then
 
 
 ## Code Examples
-Show examples of usage:
-`put-your-code-here`
+
+controller.post("/register", function(request, response) {
+    const user = request.body.username;
+    const password = request.body.pass;
+    if (!user || !password) {
+        response.send(401, 'no user or no password');
+        return;
+    }
 
 ## Features
 
