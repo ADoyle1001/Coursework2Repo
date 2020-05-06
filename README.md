@@ -25,27 +25,19 @@ Web application to allow users to track assignments and set milestones
 * passport - v0.4.1
 
 ## Setup
-to run and install on local machine enter the following commands in the git termnal : 
+to run intsall on local machine and : 
 
+* cd coursework2repo 
 
-Node install bycryptjs
+* Npm install mustache --save
+* Npm install nedb --save
+* Npm install passport -- local
+* Npm install bycryptjs  
+* Npm install mustache --save
+* Npm  install passport                 
+* Npm install express --save
 
-Npm install mustache --save
-
-Npm install nedb --save
-
-Npm  install passport -- local
-
-Npm install bycryptjs  
-
-Npm install mustache --save
-
-Npm install nedb --save 
-
-Npm  istall passport -- local
-
-
-node index.js
+* node index.js
 
 go to "localhost:3000" once prompted that server has started
 
