@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+  {{>header}}
+</head>
+
+<body class="container">
+
+  <h2 class="display-4">List of Courseworks</h1>
+    
+    <div class="text-right">
+      <a href="/addCoursework" class="btn btn-primary">
+        Add a Coursework
+      </a>
+    </div>
+
+    <div class="text-left" style="margin-bottom: 1em;">
+
+      {{#entries}}
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+           Coursework: {{Ctitle}}
+  
+            <a href="delete/{{Ctitle}}"><i class="fa fa-trash fa-lg"></i></a>
+
+            <a href="edit/{{Ctitle}}"><i class="fa fa-edit fa-lg"></i></a> 
+
+            
+
+          </div>
+          <div class="card-text">
+            
+            <div class="card-text">CourseworkModule: {{module}}</div>
+            <div class="card-text">ProjectMilestones: {{milestones}}</div>
+            <div class="card-text">Coursework is due on : {{duedate}}</div>
+            <div class="card-text">The coursework was completed on: {{completed}}</div>
+
+            
+          </div>
+        </div>
+      </div>
+      {{/entries}}
+
+    </div>
+</body>
+
+</html>
+
+
