@@ -19,14 +19,18 @@ init() {
     this.db.insert({
         Ctitle: 'Web Dev',
         module: 'Test', 
-        milestones: 'made a website'
+        milestones: 'made a website',
+        duedate: '2020-05-16',
+        completed: '2020-05-15'
     });
     console.log('record inserted in init');
     
     this.db.insert({
         Ctitle: 'IP3',
         module: 'Integrated', 
-        milestones: 'made a mockup'
+        milestones: 'made a mockup',
+        duedate: '2020-04-21',
+        completed: '2020-04-21'
     });
     console.log('record inserted in init');
 }
@@ -46,11 +50,13 @@ init() {
     }
 
      //insert a new coursework entry
-     addCoursework(Ctitle, module, milestones) {
+     addCoursework(Ctitle, module, milestones,duedate,completed) {
         var entry = {
             Ctitle: Ctitle,
             module: module,
-            milestones: milestones
+            milestones: milestones,
+            duedate: new Date(duedate).toISOString().split('T')[0],
+            completed: new Date(completed).toISOString().split('T')[0]
         };
 
         this.db.insert(entry, function (err, doc) {
@@ -74,8 +80,8 @@ init() {
     }
 
     //update details for a coursework
-    updateCoursework(Ctitle, module, milestones) {
-        this.db.update({ "Ctitle": Ctitle }, { $set: { "module": module, "milestones": milestones } },
+    updateCoursework(Ctitle, module, milestones,duedate,completed) {
+        this.db.update({ "Ctitle": Ctitle }, { $set: { "module": module, "milestones": milestones, "duedate": duedate, "completed" : completed, true: true  } },
             function (err, numReplaced) {
                 if (err) {
                     console.log('Error updating coursework', Ctitle, err);
