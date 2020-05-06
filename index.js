@@ -14,7 +14,7 @@ app.set('view engine', 'mustache');
 //var staticPath = path.resolve(__dirname, "/static");
 app.use(express.static('static'));
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', controller);
 
