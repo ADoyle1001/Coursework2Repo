@@ -25,7 +25,7 @@ Web application to allow users to track assignments and set milestones
 * passport - v0.4.1
 
 ## Setup
-to run intsall on local machine and : 
+to run and install on local machine and : 
 
 
 Node install bycryptjs
