@@ -53,4 +53,8 @@ Project is:  _finished_
 Coursework set for Web Platfrom development 2 module at GCU
 
 ## Contact
-Created by Lmckay202@caledonian.ac.uk
+Created by 
+* Lmckay202@caledonian.ac.uk
+* AMAHMU201@caledonian.ac.uk
+* ADOYLE205@caledonian.ac.uk
+* rhughe205@caledonian.ac.uk
